@@ -19,13 +19,15 @@ def pstfx(x):
                 r = f*s
 
             if i == "/":
-                r = f/s
+                r = s/f
 
             if i == "-":
-                r = f-s
+                r = s-f
 
             if i == "^":
                 r = s**f
+
+            
             oprnd.append(r)
     return oprnd.pop()
 
@@ -34,10 +36,11 @@ def infx(x):
     oprnd = []
     oprtr = []
     prec = {}
-    prec["*"] = 3
-    prec["/"] = 3
-    prec["+"] = 2
-    prec["-"] = 2
+    prec["*"] = 4
+    prec["/"] = 4
+    prec["+"] = 3
+    prec["-"] = 3
+    prec["^"] = 2
     prec["("] = 1
     for i in x:
         if i not in operator:
@@ -59,7 +62,7 @@ def infx(x):
 
     while oprtr != []:
         oprnd.append(oprtr.pop())
-    return " ".join(oprnd)
+    return "".join(oprnd)
 
 
 
